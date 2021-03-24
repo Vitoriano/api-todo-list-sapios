@@ -3,7 +3,7 @@ const routes = require('./routes')
 
 class AppController {
   constructor() {
-
+    
     this.express = express()
     this.middlewares()
     this.routes()
