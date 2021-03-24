@@ -1,0 +1,17 @@
+{
+  "name": "api-todo-sapios",
+  "version": "1.0.0",
+  "description": "API Realtime Para Listagem de tarefas do to-do list",
+  "main": "index.js",
+  "author": "Vitoriano Ernandes",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.7"
+  }
+}
