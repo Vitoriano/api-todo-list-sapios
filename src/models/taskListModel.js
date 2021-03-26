@@ -42,15 +42,15 @@ const deleteTask = async(id) => {
   await db('task_list_item').where('id', id).del()
 }
 
-const modifyTask = async(task_id, list_id) => {
-
-  return true
+const getSecretPass = async() => {
+ const pass =  await db('secret_pass').select('*').first()
+  return pass
 }
 
 module.exports = {
   getTaskByListId,
   create,
-  modifyTask,
+  getSecretPass,
   getTaskById,
   update,
   getTask,

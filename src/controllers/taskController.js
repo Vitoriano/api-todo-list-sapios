@@ -57,9 +57,11 @@ const createTaskItem = async(req, res) => {
 
 const alterTaskStatus = async(req, res) => {
 
-  const { id, list_id, is_done } = req.body
+  const { id, password } = req.body
 
-  const task = await Task.getTaskById(list_id, id)
+  const secretPass = await Task.getSecretPass()
+
+  const task = await Task.getTask(id)
 
   if(task.update_count >= 2 && task.is_done) {
    return res.status(401).send({
@@ -67,27 +69,39 @@ const alterTaskStatus = async(req, res) => {
     })
   }
 
-  await Task.update({...task, is_done})
+  if(password == secretPass.password) {
+    let is_done = !task.is_done
 
-  return res.status(200).send({
-    message: 'Status atualizado com sucesso!'
-  })
+    await Task.update({...task, is_done, update_count: ++task.update_count})
+
+    return res.status(200).send({
+      message: 'Status atualizado com sucesso!'
+    })
+  } else {
+    return res.status(401).send({
+      message: 'Ops! Houve um problema na sua solicitação. favor verifica o preenchimento dos campos'
+    })
+  }
 
 }
 
 const updateTask = async(req, res) => {
   try {
 
+    const { task_id } = req.params
     const { name, email, describe, list_id, is_done } = req.body
 
-    // await Task.update( { 
-    //   name, 
-     
-    // })
+    await Task.update( { 
+      id: task_id,
+      name, 
+      email, 
+      describe, 
+      list_id, 
+      is_done
+    })
 
     res.status(200).send({
-     message: "Tarefa atualizada com sucesso!",
-     name, email, describe, list_id, is_done
+     message: "Tarefa atualizada com sucesso!"
     })
 
   } catch (error) {
