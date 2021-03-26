@@ -75,9 +75,48 @@ const alterTaskStatus = async(req, res) => {
 
 }
 
+const updateTask = async(req, res) => {
+  try {
+
+    const { name, email, describe, list_id, is_done } = req.body
+
+    // await Task.update( { 
+    //   name, 
+     
+    // })
+
+    res.status(200).send({
+     message: "Tarefa atualizada com sucesso!",
+     name, email, describe, list_id, is_done
+    })
+
+  } catch (error) {
+    res.status(400).send({
+      message: 'Ops! Não foi possivel atualiar esta tarefa'
+    })
+  }
+}
+
+const deleteTask = async(req, res) => {
+  try {
+
+     await Task.deleteTask(req.params.task_id)
+
+      res.status(200).send({
+          message: 'Tarefa excluído com sucesso.'
+      })
+  } catch (error) {
+      res.status(500).send({
+          message: 'Ops! Não foi possível excluir a tarefa. '
+      })
+  }
+}
+
 module.exports = {
   index,
   createTaskItem,
   alterTaskStatus,
-  getAll
+  getAll,
+  updateTask,
+  deleteTask
 }

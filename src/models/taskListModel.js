@@ -38,6 +38,10 @@ const update = async(task) => {
   return is_update
 }
 
+const deleteTask = async(id) => {
+  await db('task_list_item').where('id', id).del()
+}
+
 const modifyTask = async(task_id, list_id) => {
 
   return true
@@ -49,5 +53,6 @@ module.exports = {
   modifyTask,
   getTaskById,
   update,
-  getTask
+  getTask,
+  deleteTask
 }
