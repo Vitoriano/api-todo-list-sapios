@@ -16,6 +16,8 @@
 # Create database called 'sapios'
 create database sapios
 
+# Add environment database variables to the .env file 
+
 # Clone this repository
 git clone https://github.com/Vitoriano/api-todo-list-sapios.git
 
@@ -40,7 +42,7 @@ npm start
 ## Features
 
 - [x] API Rest with express
-- [x] Task Manager api endpoints
+- [x] Task Manager Api Endpoints
 - [x] Container based development using **Docker**
 
 
