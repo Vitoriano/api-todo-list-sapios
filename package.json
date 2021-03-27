@@ -6,11 +6,10 @@
   "author": "Vitoriano Ernandes",
   "license": "MIT",
   "scripts": {
-    "prestart": "npx knex migrate:latest",
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js",
-    "poststart": "npx knex seed:run",
-    "knex": "knex"
+    "start": "NODE_ENV=production node src/server.js",
+    "migrate": "npx knex migrate:latest",
+    "seed": "npx knex seed:run"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -18,7 +17,9 @@
     "express": "^4.17.1",
     "knex": "^0.95.2",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.7",
     "socket.io": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
