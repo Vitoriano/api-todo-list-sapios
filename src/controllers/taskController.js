@@ -72,10 +72,11 @@ const alterTaskStatus = async(req, res) => {
   if(password == secretPass.password) {
     let is_done = !task.is_done
 
-    await Task.update({...task, is_done, update_count: ++task.update_count})
+    await Task.update({...task, is_done, update_count: (task.update_count + 1)})
 
     return res.status(200).send({
-      message: 'Status atualizado com sucesso!'
+      message: 'Status atualizado com sucesso!',
+      list_id: task.list_id
     })
   } else {
     return res.status(401).send({

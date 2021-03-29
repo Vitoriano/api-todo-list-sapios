@@ -13,7 +13,3 @@ EXPOSE 3000
 CMD ["npm", "start" ]
 
 WORKDIR /usr/app
-
-# RUN npm run migrate
-
-# RUN npx knex seed:run
