@@ -1,5 +1,9 @@
 ## API Todo-List - Teste Sapios
 
+## Video Walkthrough of Todo-List
+
+> https://youtu.be/S5vlGHeQXuE
+
 # Installation 
 
   ## Easy Way
